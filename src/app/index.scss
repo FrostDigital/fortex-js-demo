@@ -1,0 +1,147 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+.marvel-device.iphone6:after {
+  z-index: -1;
+}
+
+.navbar {
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  border-bottom: #666;
+  padding: 15px 10px 10px 10px;
+
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    color: black;
+  }
+
+  .left-btn, .right-btn {
+    position: absolute;
+    min-width: 20px;
+  }
+
+  .left-btn {
+    left: 5px;
+    top: 20px;
+  }
+
+  .right-btn {
+    right: 5px;
+    top: 20px;
+  }
+}
+
+#phone-ctn {
+  width: 50%;
+  float: left;
+  text-align: center;
+
+  .iphone6 {
+    margin: 40px auto;
+    
+    .screen {
+      cursor: crosshair;
+      color: #666;
+      text-align: left;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+
+}
+
+#pane-ctn {
+  width: 48%;
+  height: 100%;
+  min-height: 100px;
+  min-width: 100px;
+  float: left;
+  background-color: #f1f1f1;
+  padding: 1%;
+
+  h2 {
+    font-size: 15px;
+  }
+  .pane-large,
+  .pane-small {
+    height: 50%;
+    overflow: scroll;
+  }
+
+  .pane-small {
+    float: left;
+    width: 49%;
+  }
+}
+
+
+// Option list
+.option-list {
+  li {
+    display: block;
+    padding: 20px 10px;
+    border-bottom: 1px solid #ccc;
+
+    &.selected {
+      background-color: #aadcb0;
+      pointer-events: none;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      color: #ccc;
+    }
+
+    &.changed {
+      background-color: #f5a623;
+    }
+
+    &.warn {
+      background-color: #ffd8d8;
+    }
+
+    &.section-hd {
+      padding: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      background-color: #ddd;
+      font-size: 13px;
+    }
+
+    .key, .value {
+      display: inline-block;
+    }
+
+    .key {
+      width: 230px;
+      color: black;
+    }
+
+    .value {
+      width: 90px;
+    }
+  }
+}
+
+// injector
+// endinjector

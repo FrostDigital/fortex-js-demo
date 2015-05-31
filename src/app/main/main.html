@@ -1,0 +1,54 @@
+<div id="phone-ctn">
+  <div class="marvel-device iphone6 silver">
+      <div class="top-bar"></div>
+      <div class="sleep"></div>
+      <div class="volume"></div>
+      <div class="camera"></div>
+      <div class="sensor"></div>
+      <div class="speaker"></div>
+      <div class="screen" id="screen">
+        
+        <div class="navbar">
+          <span class="left-btn" ng-click="back()"><</span>
+          <span class="right-btn"></span>
+          <h1>{{viewModel.title}}</h1>
+        </div>
+
+        <div ng-if="viewModel.view === 'option-list' || viewModel.view === 'existing-site-root'" class="option-list">
+          <ul ng-repeat="section in viewModel.sections">
+            <li class="section-hd" ng-if="section.title">{{section.title}}</li>
+            <li 
+              ng-repeat="option in section.options track by $index"
+              ng-click="invoke(option, viewModel.id)"
+              ng-class="{selected: option.selected, disabled: option.disabled, changed: option.style === 'changed', warn: option.style === 'warn'}">
+              <span class="key" ng-if="option.label">{{option.label}}</span>
+              <span class="value" ng-if="option.value">{{option.displayValue || '-'}}</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="home"></div>
+      <div class="bottom-bar"></div>
+  </div>
+</div>
+<div id="pane-ctn">
+  <div class="pane-large">
+    <h2>View model</h2>
+    <pre>
+{{viewModel | json}}  
+    </pre>
+  </div>
+  <div class="pane-small">
+    <h2>Stack ({{stack.length}})</h2>
+    <pre>
+{{stack | json}}
+    </pre>
+  </div>
+  <div class="pane-small">
+    <h2>Invoke</h2>
+    <pre>
+{{invocation | json}}
+    </pre>
+  </div>
+</div>
