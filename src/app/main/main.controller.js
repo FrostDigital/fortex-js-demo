@@ -61,9 +61,11 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
   }
 
   function handleAlert(o) {
-    if(o.alert) {
-      alert(o.alert);
-    }
+    // Note: timeout just to see invocation the log pane
+    $timeout(function() { 
+      alert(o.text);
+      invoke(o.ok);
+    });
   }
 
   function handlePrompt(o) {
