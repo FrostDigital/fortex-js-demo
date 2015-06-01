@@ -9,6 +9,7 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
   $scope.errand = null;
   $scope.invoke = invoke;
   $scope.back = back;
+  $scope.submit = submit;
 
   init();
 
@@ -25,22 +26,26 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
   // submitted
   function invoke(o) {
     $scope.invocation = o;
-
-    // Invoke returns a new view model where `actionType`
+    
+    // Invoke returns a new view model where `action`
     // decides which action to take
     var viewModel = $scope.errand.invoke(o);
+    var action  = viewModel.action;
 
-    if(viewModel.actionType === 'open') {
+    if(action === 'open') {
       handleOpen(viewModel);
     }
-    if(viewModel.actionType === 'refresh') {
+    if(action === 'refresh') {
       handleRefresh(viewModel);
     }
-    if(viewModel.actionType === 'alert') {
+    if(action === 'alert') {
       handleAlert(viewModel);
     }
-    if(viewModel.actionType === 'prompt') {
+    if(action === 'prompt') {
       handlePrompt(viewModel);
+    }
+    if(action === 'submitted') {
+      back();
     }
   }
 
@@ -82,6 +87,11 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
   function back() {
     $scope.errand.getViewModel('root');
     pop();
+  }
+
+  function submit() {
+    // Note: This should only happen if we have a form or other "submittable" view
+    invoke(_.extend($scope.viewModel, { action: 'submit' }));
   }
 
   

@@ -10,7 +10,7 @@
         
         <div class="navbar">
           <span class="left-btn" ng-click="back()"><</span>
-          <span class="right-btn"></span>
+          <span class="right-btn" ng-if="viewModel.view == 'form'" ng-click="submit()">Klar</span>
           <h1>{{viewModel.title}}</h1>
         </div>
 
@@ -23,6 +23,15 @@
               ng-class="{selected: option.selected, disabled: option.disabled, changed: option.style === 'changed', warn: option.style === 'warn'}">
               <span class="key" ng-if="option.label">{{option.label}}</span>
               <span class="value" ng-if="option.value">{{option.displayValue || '-'}}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div ng-if="viewModel.view === 'form'" class="form">
+          <ul>
+            <li ng-repeat="input in viewModel.inputs">
+              <label>{{input.label}}</label>
+              <input type="text" ng-model="input.value" placeholder="{{input.placeholder}}">
             </li>
           </ul>
         </div>
