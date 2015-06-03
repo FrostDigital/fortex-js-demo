@@ -33,4 +33,6 @@ var devSite = {
     objectNo: '',
     premisesTypeId: '3',
     placingName: 'I Bostad'
+
+    // SCB code och category => Uppvärmningssätt
 };

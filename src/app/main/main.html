@@ -10,7 +10,7 @@
         
         <div class="navbar">
           <span class="left-btn" ng-click="back()"><</span>
-          <span class="right-btn" ng-if="viewModel.view == 'form'" ng-click="submit()">Klar</span>
+          <!--span class="right-btn" ng-if="viewModel.view == 'form'" ng-click="submit()">Klar</span -->
           <h1>{{viewModel.title}}</h1>
         </div>
 
@@ -27,13 +27,14 @@
           </ul>
         </div>
 
-        <div ng-if="viewModel.view === 'form'" class="form">
-          <ul>
-            <li ng-repeat="input in viewModel.inputs">
-              <label>{{input.label}}</label>
-              <input type="text" ng-model="input.value" placeholder="{{input.placeholder}}">
-            </li>
-          </ul>
+        <div ng-if="viewModel.view === 'form-single-input'" class="form">   
+          <p ng-if="viewModel.errorMsg">{{viewModel.errorMsg}}</p>       
+          <label>{{viewModel.input.label}}</label>
+          <input type="text" 
+                 ng-model="viewModel.input.value"
+                 placeholder="{{viewModel.input.placeholder}}"
+                 ng-blur="submitForm()">
+      
         </div>
 
       </div>

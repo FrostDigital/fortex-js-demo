@@ -9,7 +9,7 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
   $scope.errand = null;
   $scope.invoke = invoke;
   $scope.back = back;
-  $scope.submit = submit;
+  $scope.submitForm = submitForm;
 
   init();
 
@@ -44,9 +44,9 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
     if(action === 'prompt') {
       handlePrompt(viewModel);
     }
-    if(action === 'submitted') {
-      back();
-    }
+    // if(action === 'submitted') {
+    //   back();
+    // }
   }
 
 
@@ -89,9 +89,13 @@ angular.module('fortexDemo').controller('MainCtrl', function ($scope, $timeout) 
     pop();
   }
 
-  function submit() {
-    // Note: This should only happen if we have a form or other "submittable" view
-    invoke(_.extend($scope.viewModel, { action: 'submit' }));
+  // function submit() {
+  //   // Note: This should only happen if we have a form or other "submittable" view
+  //   invoke(_.extend($scope.viewModel, { action: 'submit' }));
+  // }
+
+  function submitForm() {
+    invoke(_.extend($scope.viewModel, {action: 'submit'}));
   }
 
   
